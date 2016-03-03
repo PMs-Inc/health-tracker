@@ -13,6 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20160303195500) do
 
+  create_table "exercises", force: :cascade do |t|
+    t.integer  "exercise_type_id"
+    t.integer  "date_id"
+    t.decimal  "duration",         precision: 5, scale: 2
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
   create_table "meals", force: :cascade do |t|
     t.integer  "calories"
     t.string   "description"

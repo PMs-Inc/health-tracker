@@ -2,12 +2,19 @@ Rails.application.routes.draw do
 
   resources :exercises
   resources :meals
-  resources :steps
 
   get 'weights' => 'weights#show'
 
   get 'dashboard/show'
   root 'dashboard#show'
+
+  get 'weights/:id' => 'weights#show', as: :weight
+
+  get 'steps' => 'steps#index', as: :steps
+  post 'steps' => 'steps#create'
+  get 'steps/new' => 'steps#new', as: :new_step
+  get 'steps/:id' => 'steps#show', as: :step
+  delete 'steps/:id' => 'steps#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

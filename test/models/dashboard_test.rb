@@ -33,7 +33,8 @@ class ExerciseTest < ActiveSupport::TestCase
 
   test "can get weight delta since last record" do
     dashboard = Dashboard.new(3)
-    assert_equal -0.067, dashboard.weight_delta
+    assert_equal -0.067, dashboard.weight_delta[:percent]
+    assert_equal -10, dashboard.weight_delta[:pounds]
   end
 
 end

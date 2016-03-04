@@ -35,6 +35,8 @@ class Dashboard
 
   def weight_delta
     number = Weight.order(:date_id).count
-    ((Weight.order(:date_id)[number-1].weight - Weight.order(:date_id)[number-2].weight) / Weight.order(:date_id)[number-1].weight).round(3)
+    delta_percent = ((Weight.order(:date_id)[number-1].weight - Weight.order(:date_id)[number-2].weight) / Weight.order(:date_id)[number-1].weight).round(3)
+    delta_pounds = Weight.order(:date_id)[number-1].weight - Weight.order(:date_id)[number-2].weight
+    {percent: delta_percent, pounds: delta_pounds}
   end
 end

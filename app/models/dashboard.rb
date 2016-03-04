@@ -23,6 +23,10 @@ class Dashboard
     records_exist?(Step)
   end
 
+  def steps_count
+    Step.where(date_id: @date).sum(:step_count)
+  end
+
   def current_weight
     Weight.order(:date_id).last.weight
   end

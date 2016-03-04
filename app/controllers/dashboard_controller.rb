@@ -9,5 +9,7 @@ class DashboardController < ApplicationController
 
     @exercises = Exercise.where(date_id: params[:date].to_i)
     @meals = Meal.where(date_id: params[:date].to_i)
+    @weights = Weight.where(date_id: params[:date].to_i)
+    @steps = Step.where(date_id: params[:date].to_i)
   end
 end

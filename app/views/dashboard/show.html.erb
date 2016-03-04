@@ -17,6 +17,7 @@
 <% end %>
 <% if Meal.count > 0 %>
   <p><strong>Calories consumed on this date: </strong><%= @dashboard.calories_consumed %>.</p>
+  <p><em>Maybe you should have avoided the <%= @dashboard.most_caloric_meal[:description] %> (<%= @dashboard.most_caloric_meal[:calories]%> calories!)</em></p>
 <% end %>
 <% if Exercise.count > 0 %>
   <p><strong>Calories burned for this date: </strong><%= @dashboard.calories_burned %>.</p>

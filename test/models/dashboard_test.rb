@@ -37,4 +37,10 @@ class ExerciseTest < ActiveSupport::TestCase
     assert_equal -10, dashboard.weight_delta[:pounds]
   end
 
+  test "can get meal with most calories" do
+    dashboard = Dashboard.new(3)
+    assert_equal "Margarita", dashboard.most_caloric_meal[:description]
+    assert_equal 300, dashboard.most_caloric_meal[:calories]
+  end
+
 end

@@ -39,4 +39,9 @@ class Dashboard
     delta_pounds = Weight.order(:date_id)[number-1].weight - Weight.order(:date_id)[number-2].weight
     {percent: delta_percent, pounds: delta_pounds}
   end
+
+  def most_caloric_meal
+    meal = Meal.where(date_id: @date).order(:calories).last
+    {description: meal.description, calories: meal.calories}
+  end
 end

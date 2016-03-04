@@ -12,9 +12,7 @@ class Dashboard
   end
 
   def calories_consumed
-    #calculates calories consumed for the most recently entered date
-    meal = Meal.group(:date_id).sum(:calories)
-    calories = meal[@date]
+    meal = Meal.group(:date_id).sum(:calories)[@date]
   end
 
   def calories_burned

@@ -23,7 +23,7 @@
 - [ ] * You should create at least a few seeds and fixtures.
 - [ ] * Your dashboard must:
 - [x]   * have links to all four of the list pages.
-- [ ]   * show the net number of calories for the day (calories consumed minus calories burned through exercise).
+- [x]   * show the net number of calories for the day (calories consumed minus calories burned through exercise).
 - [ ]   * show two other statistics of your choosing (but they must be calculated from your data).
 
 There are a few data requirements:

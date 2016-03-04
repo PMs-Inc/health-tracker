@@ -10,7 +10,7 @@
   <p><strong>Current Weight: </strong><%= @dashboard.current_weight %> lbs.</p>
 <% end %>
 <% if Meal.count > 0 %>
-  <p><strong>Calories consumed on the most recent date: </strong><%= @dashboard.calories_consumed %>.</p>
+  <p><strong>Calories consumed on this date: </strong><%= @dashboard.calories_consumed %>.</p>
 <% end %>
 <% if Exercise.count > 0 %>
   <p><strong>Calories burned for this date: </strong><%= @dashboard.calories_burned %>.</p>

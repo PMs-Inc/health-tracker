@@ -6,5 +6,7 @@ class DashboardController < ApplicationController
     @meal = Meal.new
     @weight = Weight.new
     @step = Step.new
+
+    @exercises = Exercise.where(date_id: params[:date].to_i)
   end
 end

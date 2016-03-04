@@ -1,27 +1,31 @@
-<h5>Listing Meals</h5>
+<h4>Listing Meals</h4>
 
-<table>
-  <thead>
-    <tr>
-      <th>Calories</th>
-      <th>Description</th>
-      <th>Date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @meals.each do |meal| %>
+<% if @meals.count > 0 %>
+  <table>
+    <thead>
       <tr>
-        <td><%= meal.calories %></td>
-        <td><%= meal.description %></td>
-        <td><%= meal.date_id %></td>
-        <td><%= link_to 'Show', meal %></td>
-        <td><%= link_to 'Edit', edit_meal_path(meal) %></td>
-        <td><%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Calories</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @meals.each do |meal| %>
+        <tr>
+          <td><%= meal.calories %></td>
+          <td><%= meal.description %></td>
+          <td><%= meal.date_id %></td>
+          <td><%= link_to 'Show', meal %></td>
+          <td><%= link_to 'Edit', edit_meal_path(meal) %></td>
+          <td><%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No meals</p>
+<% end %>
 
 <br>

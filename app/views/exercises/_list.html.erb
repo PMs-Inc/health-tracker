@@ -1,27 +1,32 @@
-<h5>Listing Exercises</h5>
+<h4>Listing Exercises</h4>
 
-<table>
-  <thead>
-    <tr>
-      <th>Exercise type</th>
-      <th>Date</th>
-      <th>Duration</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @exercises.each do |exercise| %>
+<% if @exercises.count > 0 %>
+  <table>
+    <thead>
       <tr>
-        <td><%= exercise.exercise_type_id %></td>
-        <td><%= exercise.date_id %></td>
-        <td><%= exercise.duration %></td>
-        <td><%= link_to 'Show', exercise %></td>
-        <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
-        <td><%= link_to 'Destroy', exercise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Exercise type</th>
+        <th>Date</th>
+        <th>Duration</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @exercises.each do |exercise| %>
+        <tr>
+          <td><%= exercise.exercise_type_id %></td>
+          <td><%= exercise.date_id %></td>
+          <td><%= exercise.duration %></td>
+          <td><%= link_to 'Show', exercise %></td>
+          <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
+          <td><%= link_to 'Destroy', exercise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No exercises</p>
+<% end %>
+
 
 <br>

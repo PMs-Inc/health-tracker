@@ -35,18 +35,16 @@
 <% end %>
 
 
-<h5>New Exercise</h5>
+<h4>New Exercise</h4>
 <%= render 'exercises/form', :exercise => @exercise %>
-<h5>New Meal</h5>
+<h4>New Meal</h4>
 <%= render 'meals/form', :meal => @meal %>
-<h5>New Step</h5>
+<h4>New Step</h4>
 <%= render 'steps/form', :step => @step %>
-<h5>New Weight</h5>
+<h4>New Weight</h4>
 <%= render 'weights/form', :weight => @weight %>
 
 <%= render 'exercises/list', :exercises => @exercises %>
 <%= render 'meals/list', :meals => @meals %>
-<h5>Steps Listing</h5>
 <%= render 'steps/listing', :step => @steps %>
-<h5>Weights Listing</h5>
 <%= render 'weights/listing', :weight => @weights %>

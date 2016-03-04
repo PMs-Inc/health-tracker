@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   get 'weights' => 'weights#show'
   get 'weights/index'
-  
+  get 'weights/:id' => 'weights#show'
+
   get 'steps' => 'steps#show'
 
   get 'dashboard/show'

@@ -2,6 +2,10 @@ require 'test_helper'
 
 class WeightsControllerTest < ActionController::TestCase
 
+  setup do
+    @weight = weights(:one)
+  end
+
   # index
   test "can get index" do
     get :index
@@ -10,7 +14,8 @@ class WeightsControllerTest < ActionController::TestCase
 
   # show
   test "can get show" do
-
+    get :show, id: @weight.id
+    assert_response :success
   end
 
   # new

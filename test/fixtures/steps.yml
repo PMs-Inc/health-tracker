@@ -2,8 +2,8 @@
 
 one:
   date_id: 1
-  step_count: 1
+  step_count: 5,000
 
 two:
-  date_id: 1
-  step_count: 1
+  date_id: 2
+  step_count: 7567

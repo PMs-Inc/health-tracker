@@ -53,4 +53,15 @@ class Dashboard
     (calories_burned / total_exercise_time).round(2)
   end
 
+  def weight_delta
+    number = Weight.order(:date_id).count
+    delta_percent = ((Weight.order(:date_id)[number-1].weight - Weight.order(:date_id)[number-2].weight) / Weight.order(:date_id)[number-1].weight).round(3)
+    delta_pounds = Weight.order(:date_id)[number-1].weight - Weight.order(:date_id)[number-2].weight
+    {percent: delta_percent, pounds: delta_pounds}
+  end
+
+  def most_caloric_meal
+    meal = Meal.where(date_id: @date).order(:calories).last
+    {description: meal.description, calories: meal.calories}
+  end
 end

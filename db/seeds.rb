@@ -20,3 +20,5 @@ ExerciseType.create(name: "Bicycling", calories_per_min: 7)
 10.times do |i|
   Day.create(date: (Time.now - i.day).to_date)
 end
+
+Weight.create(weight: 0.0)

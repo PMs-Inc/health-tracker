@@ -16,11 +16,14 @@ class ExercisesController < ApplicationController
   def new
     @exercise = Exercise.new
     @options = ExerciseType.get_options
+    @days = Day.get_days
   end
 
   # GET /exercises/1/edit
   def edit
     @options = ExerciseType.get_options
+    @days = Day.get_days
+
   end
 
   # POST /exercises

@@ -16,3 +16,7 @@ ExerciseType.create(name: "Jog/walk combo", calories_per_min: 7)
 ExerciseType.create(name: "Dancing", calories_per_min: 9)
 ExerciseType.create(name: "Calisthenics", calories_per_min: 10)
 ExerciseType.create(name: "Bicycling", calories_per_min: 7)
+
+10.times do |i|
+  Day.create(date: (Time.now - i.day).to_date)
+end

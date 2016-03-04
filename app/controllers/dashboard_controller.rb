@@ -14,5 +14,7 @@ class DashboardController < ApplicationController
     @meals = Meal.where(date_id: date_int)
     @weights = Weight.where(date_id: date_int)
     @steps = Step.where(date_id: date_int)
+    @days = Day.get_days
+
   end
 end

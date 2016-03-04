@@ -1,9 +1,10 @@
 class Dashboard
-  def initialize
+  def initialize(date)
     @exercises = Exercise.all
     @meals = Meal.all
     @steps = Step.all
     @weight = Weight.all
+    @date = date
   end
 
   def current_weight
@@ -12,7 +13,8 @@ class Dashboard
 
   def calories_consumed
     #calculates calories consumed for the most recently entered date
-    meal = Meal.group(:date_id).order('date_id DESC').sum(:calories).first[1]
+    meal = Meal.group(:date_id).sum(:calories)
+    calories = meal[@date]
   end
 
 end

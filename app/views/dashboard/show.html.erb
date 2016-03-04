@@ -6,5 +6,9 @@
 <p><%= link_to 'View all meals', meals_path %></p>
 <p><%= link_to 'View all weight entries', weights_path %></p>
 
-<p><strong>Current Weight: </strong><%= @dashboard.current_weight %> lbs.</p>
-<p><strong>Calories consumed on the most recent date: </strong><%= @dashboard.calories_consumed %>.</p>
+<% if Weight.count > 0 %>
+  <p><strong>Current Weight: </strong><%= @dashboard.current_weight %> lbs.</p>
+<% end %>
+<% if Meal.count > 0 %>
+  <p><strong>Calories consumed on the most recent date: </strong><%= @dashboard.calories_consumed %>.</p>
+<% end %>

@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  name: "Running"
+  calories_per_min: 5
+
+two:
+  id: 2
+  name: "Swimming"
+  calories_per_min: 7
+
+three:
+  id: 3
+  name: "Elliptical"
+  calories_per_min: 3

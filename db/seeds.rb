@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+ExerciseType.create(name: "Walking", calories_per_min: 7)
+ExerciseType.create(name: "Weight lifting", calories_per_min: 7)
+ExerciseType.create(name: "Swimming", calories_per_min: 12)
+ExerciseType.create(name: "Running", calories_per_min: 20)
+ExerciseType.create(name: "Rowing", calories_per_min: 9)
+ExerciseType.create(name: "Jog/walk combo", calories_per_min: 7)
+ExerciseType.create(name: "Dancing", calories_per_min: 9)
+ExerciseType.create(name: "Calisthenics", calories_per_min: 10)
+ExerciseType.create(name: "Bicycling", calories_per_min: 7)

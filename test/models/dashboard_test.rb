@@ -31,6 +31,10 @@ class ExerciseTest < ActiveSupport::TestCase
     assert_equal 3.89, dashboard.avg_calories_burned
   end
 
+  test "can find whether records exist for a day" do
+    dashboard = Dashboard.new(3)
+    assert dashboard.records_exist
+  end
 
 
 end

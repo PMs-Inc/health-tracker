@@ -6,19 +6,23 @@
 <p><%= link_to 'View all meals', meals_path %></p>
 <p><%= link_to 'View all weight entries', weights_path %></p>
 
-<% if Weight.count > 0 %>
+<% if @dashboard.show_weight_data %>
   <p><strong>Current Weight: </strong><%= @dashboard.current_weight %> lbs.</p>
+<% else %>
+  <p><strong> Please <%= link_to 'enter a weight value.', weights_new_path%></strong></p>
 <% end %>
-<% if Meal.count > 0 %>
+
+<% if @dashboard.show_meal_data %>
   <p><strong>Calories consumed on this date: </strong><%= @dashboard.calories_consumed %>.</p>
 <% end %>
-<% if Exercise.count > 0 %>
+
+<% if @dashboard.show_exercise_data %>
   <p><strong>Calories burned for this date: </strong><%= @dashboard.calories_burned %>.</p>
-<% end %>
-
-<p><strong>Net calories for this date: </strong><%= @dashboard.net_calories %>.</p>
-
-<% if Exercise.count > 0 %>
+  <p><strong>Net calories for this date: </strong><%= @dashboard.net_calories %>.</p>
   <p><strong>Total Exercise Time: </strong><%= @dashboard.total_exercise_time %>.</p>
   <p><strong>Average Calories Burned Per Minute Across Activities: </strong><%= @dashboard.avg_calories_burned %>.</p>
+<% end %>
+
+<% if @dashboard.show_step_data %>
+  <p><strong>Total steps taken: </strong><%= @dashboard.steps.count %>.</p>
 <% end %>

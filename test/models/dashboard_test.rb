@@ -38,5 +38,21 @@ class ExerciseTest < ActiveSupport::TestCase
     refute dashboard.records_exist?(Step)
   end
 
+  test "can decide whether to show meal data" do
+    dashboard = Dashboard.new(3)
+    assert dashboard.show_meal_data
+  end
+
+  test "can decide whether to show exercise data" do
+    dashboard = Dashboard.new(3)
+    assert dashboard.show_exercise_data
+  end
+
+  test "can decide whether to show step data" do
+    dashboard = Dashboard.new(3)
+    refute dashboard.show_step_data
+  end
+
+
 
 end

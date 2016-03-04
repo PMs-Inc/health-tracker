@@ -11,6 +11,22 @@ class Dashboard
     !record_class.where(date_id: @date).empty?
   end
 
+  def show_weight_data
+    Weight.count > 0 
+  end
+
+  def show_meal_data
+    records_exist?(Meal)
+  end
+
+  def show_exercise_data
+    records_exist?(Exercise)
+  end
+
+  def show_step_data
+    records_exist?(Step)
+  end
+
   def current_weight
     Weight.order(:date_id).last.weight
   end

@@ -31,6 +31,9 @@ class ExerciseTest < ActiveSupport::TestCase
     assert_equal 3.89, dashboard.avg_calories_burned
   end
 
-
+  test "can get weight delta since last record" do
+    dashboard = Dashboard.new(3)
+    assert_equal -0.067, dashboard.weight_delta
+  end
 
 end

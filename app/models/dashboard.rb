@@ -33,4 +33,8 @@ class Dashboard
     (calories_burned / total_exercise_time).round(2)
   end
 
+  def weight_delta
+    number = Weight.order(:date_id).count
+    ((Weight.order(:date_id)[number-1].weight - Weight.order(:date_id)[number-2].weight) / Weight.order(:date_id)[number-1].weight).round(3)
+  end
 end

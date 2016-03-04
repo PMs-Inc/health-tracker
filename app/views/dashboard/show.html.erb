@@ -7,7 +7,13 @@
 <p><%= link_to 'View all weight entries', weights_path %></p>
 
 <% if Weight.count > 0 %>
-  <p><strong>Current Weight: </strong><%= @dashboard.current_weight %> lbs.</p>
+  <p><strong>Current Weight: </strong><%= @dashboard.current_weight %> lbs.
+    <% if @dashboard.weight_delta < 0 %>
+      <span class="green">&Delta; <%= @dashboard.weight_delta * 100 %>%</span>
+    <% else %>
+       <span class="red">&Delta; <%= @dashboard.weight_delta * 100 %>%</span>
+    <% end %>
+  </p>
 <% end %>
 <% if Meal.count > 0 %>
   <p><strong>Calories consumed on this date: </strong><%= @dashboard.calories_consumed %>.</p>

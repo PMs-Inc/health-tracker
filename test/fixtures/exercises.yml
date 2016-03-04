@@ -3,9 +3,24 @@
 one:
   exercise_type_id: 1
   date_id: 1
-  duration: 9.99
+  duration: 15
 
 two:
+  exercise_type_id: 2
+  date_id: 2
+  duration: 15
+
+three:
+  exercise_type_id: 3
+  date_id: 3
+  duration: 15
+
+four:
   exercise_type_id: 1
-  date_id: 1
-  duration: 9.99
+  date_id: 3
+  duration: 2
+
+five:
+    exercise_type_id: 1
+    date_id: 3
+    duration: 10

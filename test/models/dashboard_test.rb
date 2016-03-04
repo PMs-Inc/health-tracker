@@ -11,6 +11,15 @@ class ExerciseTest < ActiveSupport::TestCase
     assert_equal 550, dashboard.calories_consumed
   end
 
+  test "can get calories burned" do
+    dashboard = Dashboard.new(3)
+    assert_equal 105, dashboard.calories_burned
+  end
+
+  test "can get net calories" do
+    dashboard = Dashboard.new(3)
+    assert_equal 445, dashboard.net_calories
+  end
 
 
 end

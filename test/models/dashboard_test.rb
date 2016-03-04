@@ -21,5 +21,16 @@ class ExerciseTest < ActiveSupport::TestCase
     assert_equal 445, dashboard.net_calories
   end
 
+  test "can get total exercise duration" do
+    dashboard = Dashboard.new(3)
+    assert_equal 27, dashboard.total_exercise_time
+  end
+
+  test "can get average calories burned" do
+    dashboard = Dashboard.new(3)
+    assert_equal 3.89, dashboard.avg_calories_burned
+  end
+
+
 
 end

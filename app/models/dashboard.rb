@@ -25,4 +25,13 @@ class Dashboard
     (calories_consumed || 0) - (calories_burned || 0)
   end
 
+  def total_exercise_time
+    Exercise.where(date_id: @date).sum(:duration)
+  end
+
+  def avg_calories_burned
+    (calories_burned / total_exercise_time).round(2)
+
+  end
+
 end

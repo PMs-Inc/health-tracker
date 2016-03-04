@@ -16,4 +16,9 @@
   <p><strong>Calories burned for this date: </strong><%= @dashboard.calories_burned %>.</p>
 <% end %>
 
-  <p><strong>Net calories for this date: </strong><%= @dashboard.net_calories %>.</p>
+<p><strong>Net calories for this date: </strong><%= @dashboard.net_calories %>.</p>
+
+<% if Exercise.count > 0 %>
+  <p><strong>Total Exercise Time: </strong><%= @dashboard.total_exercise_time %>.</p>
+  <p><strong>Average Calories Burned Per Minute Across Activities: </strong><%= @dashboard.avg_calories_burned %>.</p>
+<% end %>

@@ -33,3 +33,9 @@
 <% if @dashboard.show_step_data %>
   <p><strong>Total steps taken: </strong><%= @dashboard.steps.count %>.</p>
 <% end %>
+
+
+
+<%= render 'exercises/form', :exercise => @exercise %>
+<%= render 'meals/form', :meal => @meal %>
+<%= render 'steps/form', :step => @step %>

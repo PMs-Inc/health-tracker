@@ -10,10 +10,14 @@ class WeightsController < ApplicationController
 
   def new
     @weight = Weight.new
+    @days = Day.get_days
+
   end
 
   def create
     @weight = Weight.new(weight_params)
+    @days = Day.get_days
+
 
     respond_to do |format|
       if @weight.save

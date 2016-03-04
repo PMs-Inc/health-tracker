@@ -17,8 +17,7 @@
     <%= f.number_field :weight %>
   </div>
   <div class="field">
-    <%= f.label :date_id %><br>
-    <%= f.number_field :date_id %>
+    <%= f.select :date_id, @days%><br>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -15,16 +15,22 @@ class MealsController < ApplicationController
   # GET /meals/new
   def new
     @meal = Meal.new
+    @days = Day.get_days
+
   end
 
   # GET /meals/1/edit
   def edit
+    @days = Day.get_days
+
   end
 
   # POST /meals
   # POST /meals.json
   def create
     @meal = Meal.new(meal_params)
+    @days = Day.get_days
+
 
     respond_to do |format|
       if @meal.save
@@ -40,6 +46,8 @@ class MealsController < ApplicationController
   # PATCH/PUT /meals/1
   # PATCH/PUT /meals/1.json
   def update
+    @days = Day.get_days
+
     respond_to do |format|
       if @meal.update(meal_params)
         format.html { redirect_to @meal, notice: 'Meal was successfully updated.' }

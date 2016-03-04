@@ -30,6 +30,8 @@ class ExercisesController < ApplicationController
   # POST /exercises.json
   def create
     @exercise = Exercise.new(exercise_params)
+    @days = Day.get_days
+
 
     respond_to do |format|
       if @exercise.save
@@ -45,6 +47,8 @@ class ExercisesController < ApplicationController
   # PATCH/PUT /exercises/1
   # PATCH/PUT /exercises/1.json
   def update
+    @days = Day.get_days
+
     respond_to do |format|
       if @exercise.update(exercise_params)
         format.html { redirect_to @exercise, notice: 'Exercise was successfully updated.' }

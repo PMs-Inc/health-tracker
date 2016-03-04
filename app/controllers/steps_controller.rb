@@ -10,11 +10,14 @@ class StepsController < ApplicationController
 
   def new
     @step = Step.new
+    @days = Day.get_days
+
   end
 
 
   def create
     @step = Step.new(step_params)
+    @days = Day.get_days
 
     respond_to do |format|
       if @step.save

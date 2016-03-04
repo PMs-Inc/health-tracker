@@ -27,7 +27,7 @@ class WeightsControllerTest < ActionController::TestCase
   # create
   test "can get create" do
     assert_difference("Weight.count") do
-      post :create, weight: { date_id: 3, weight: 150 }
+      post :create, weight: { date_id: 55, weight: 150 }
     end
 
     assert_redirected_to weight_path(assigns(:weight))

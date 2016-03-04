@@ -1,0 +1,19 @@
+<h2>Enter a new weigh-in</h2>
+
+<%= form_for(@weight) do |f| %>
+
+  <div class="field">
+    <%= f.label :weight %><br>
+    <%= f.number_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :date_id %><br>
+    <%= f.number_field :date_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', weights_path %>

@@ -1,9 +1,5 @@
 class Dashboard
   def initialize(date)
-    @exercises = Exercise.all
-    @meals = Meal.all
-    @steps = Step.all
-    @weight = Weight.all
     @date = date
   end
 
@@ -12,7 +8,7 @@ class Dashboard
   end
 
   def show_weight_data
-    Weight.count > 0 
+    Weight.count > 0
   end
 
   def show_meal_data

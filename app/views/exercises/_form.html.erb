@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.select :exercise_type_id, ExerciseType.get_options%><br>
+    <%= f.select :exercise_type_id, @options%><br>
   </div>
   <div class="field">
     <%= f.label :date_id %><br>

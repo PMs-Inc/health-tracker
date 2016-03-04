@@ -15,10 +15,12 @@ class ExercisesController < ApplicationController
   # GET /exercises/new
   def new
     @exercise = Exercise.new
+    @options = ExerciseType.get_options
   end
 
   # GET /exercises/1/edit
   def edit
+    @options = ExerciseType.get_options
   end
 
   # POST /exercises

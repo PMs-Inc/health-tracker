@@ -8,6 +8,10 @@ class WeightsController < ApplicationController
   def show
   end
 
+  def new
+    @weight = Weight.new
+  end
+
   private
     def set_weight
       @weight = Weight.find(params[:id])

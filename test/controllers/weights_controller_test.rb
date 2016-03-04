@@ -20,7 +20,8 @@ class WeightsControllerTest < ActionController::TestCase
 
   # new
   test "can get new" do
-
+    get :new
+    assert_response :success
   end
 
   # edit

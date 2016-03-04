@@ -53,6 +53,16 @@ class ExerciseTest < ActiveSupport::TestCase
     refute dashboard.show_step_data
   end
 
+  test "can get weight delta since last record" do
+    dashboard = Dashboard.new(3)
+    assert_equal -0.067, dashboard.weight_delta[:percent]
+    assert_equal -10, dashboard.weight_delta[:pounds]
+  end
 
+  test "can get meal with most calories" do
+    dashboard = Dashboard.new(3)
+    assert_equal "Margarita", dashboard.most_caloric_meal[:description]
+    assert_equal 300, dashboard.most_caloric_meal[:calories]
+  end
 
 end

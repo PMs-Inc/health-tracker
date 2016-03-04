@@ -3,12 +3,11 @@ Rails.application.routes.draw do
   resources :exercises
   resources :meals
 
-  get 'weights' => 'weights#show'
-  get 'weights/index'
+  get 'weights' => 'weights#index'
   get 'weights/new' => 'weights#new'
   get 'weights/:id' => 'weights#show', as: :weight
   post 'weights/create'
-  delete 'weights/destroy/:id' => 'weights#destroy'
+  delete 'weights/:id' => 'weights#destroy', as: :weight_destroy
 
   get 'steps' => 'steps#show'
 

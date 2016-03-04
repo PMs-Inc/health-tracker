@@ -27,7 +27,7 @@ class WeightsController < ApplicationController
   def destroy
     @weight.destroy
     respond_to do |format|
-      format.html { redirect_to weights_index_url }
+      format.html { redirect_to weights_path}
     end
   end
 

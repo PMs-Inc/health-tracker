@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :meals
 
   get 'weights' => 'weights#show'
+  get 'weights/index'
+  
   get 'steps' => 'steps#show'
 
   get 'dashboard/show'

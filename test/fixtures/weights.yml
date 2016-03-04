@@ -2,8 +2,8 @@
 
 one:
   date_id: 1
-  weight: 9.99
+  weight: 175
 
 two:
-  date_id: 1
-  weight: 9.99
+  date_id: 2
+  weight: 200

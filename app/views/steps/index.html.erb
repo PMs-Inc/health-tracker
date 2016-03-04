@@ -1,27 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Steps</h1>
+<h1>Steps Listing</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Step Count</th>
-      <th>Date</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<%= render 'listing' %>
 
-  <tbody>
-    <% @steps.each do |step| %>
-      <tr>
-        <td><%= step.step_count %></td>
-        <td><%= step.date_id %></td>
-        <td><%= link_to 'Show', step %></td>
-        <td><%= link_to 'Destroy', step, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
 

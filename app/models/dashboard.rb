@@ -51,7 +51,6 @@ class Dashboard
 
   def avg_calories_burned
     (calories_burned / total_exercise_time).round(2)
-
   end
 
 end

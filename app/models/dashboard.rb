@@ -64,4 +64,10 @@ class Dashboard
     meal = Meal.where(date_id: @date).order(:calories).last
     {description: meal.description, calories: meal.calories}
   end
+
+  def calculate_bmr(weight, height, age)
+    66 + (6.25 * weight) + (12.7 * height) - (6.76 * age)
+  end
+
+
 end

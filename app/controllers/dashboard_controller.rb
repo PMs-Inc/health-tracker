@@ -16,5 +16,7 @@ class DashboardController < ApplicationController
     @steps = Step.where(date_id: date_int)
     @days = Day.get_days
 
+    @bmr = @dashboard.calculate_bmr(params[:weight].to_i, params[:height].to_i, params[:age].to_i)
   end
+
 end

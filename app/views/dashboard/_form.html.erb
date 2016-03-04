@@ -1,0 +1,6 @@
+<%= form_tag dashboard_show_path do %>
+  <%= hidden_field_tag :weight, @dashboard.current_weight %>
+  Enter height (inches): <%= text_field_tag :height %><br>
+  Enter age (years): <%= text_field_tag :age %>
+  <%= button_tag "Get BMR" %>
+<% end %>

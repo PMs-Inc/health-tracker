@@ -8,5 +8,4 @@ class Day < ActiveRecord::Base
     all.reduce([]) {|days, i| days << [i.date, i.id]}
   end
 
-
 end

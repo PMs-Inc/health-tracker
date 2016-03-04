@@ -7,5 +7,6 @@ class DashboardController < ApplicationController
     @weight = Weight.new
     @step = Step.new
     @weights = Weight.where(date_id: params[:date].to_i)
+    @steps = Step.where(date_id: params[:date].to_i)
   end
 end

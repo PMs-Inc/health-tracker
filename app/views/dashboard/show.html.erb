@@ -31,7 +31,7 @@
 <% end %>
 
 <% if @dashboard.show_step_data %>
-  <p><strong>Total steps taken: </strong><%= @dashboard.steps.count %>.</p>
+  <p><strong>Total steps taken: </strong><%= @dashboard.steps_count %>.</p>
 <% end %>
 
 
@@ -44,6 +44,7 @@
 <h5>New Weight</h5>
 <%= render 'weights/form', :weight => @weight %>
 
-
+<h5>Steps Listing</h5>
+<%= render 'steps/listing', :step => @steps %>
 <h5>Weights Listing</h5>
 <%= render 'weights/listing', :weight => @weights %>

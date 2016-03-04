@@ -10,4 +10,9 @@ class Dashboard
     Weight.order(:date_id).last.weight
   end
 
+  def calories_consumed
+    #calculates calories consumed for the most recently entered date
+    meal = Meal.group(:date_id).order('date_id DESC').sum(:calories).first[1]
+  end
+
 end

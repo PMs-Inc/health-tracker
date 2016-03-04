@@ -2,10 +2,20 @@
 
 one:
   calories: 1
-  description: MyString
+  description: Salad
   date_id: 1
 
 two:
   calories: 1
-  description: MyString
-  date_id: 1
+  description: Snack
+  date_id: 2
+
+three:
+  calories: 250
+  description: Pizza Slice
+  date_id: 3
+
+four:
+  calories: 300
+  description: Margarita
+  date_id: 3

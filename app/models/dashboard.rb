@@ -7,6 +7,10 @@ class Dashboard
     @date = date
   end
 
+  def records_exist?(record_class)
+    !record_class.where(date_id: @date).empty?
+  end
+
   def current_weight
     Weight.order(:date_id).last.weight
   end

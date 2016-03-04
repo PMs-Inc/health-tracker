@@ -33,7 +33,9 @@ class ExerciseTest < ActiveSupport::TestCase
 
   test "can find whether records exist for a day" do
     dashboard = Dashboard.new(3)
-    assert dashboard.records_exist
+    assert dashboard.records_exist?(Meal)
+    assert dashboard.records_exist?(Exercise)
+    refute dashboard.records_exist?(Step)
   end
 
 

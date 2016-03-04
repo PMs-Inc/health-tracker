@@ -26,7 +26,7 @@ class WeightsControllerTest < ActionController::TestCase
 
   # create
   test "can get create" do
-    assert_difference('Weight.count') do
+    assert_difference("Weight.count") do
       post :create, weight: { date_id: 3, weight: 150 }
     end
 
@@ -35,7 +35,11 @@ class WeightsControllerTest < ActionController::TestCase
 
   # destroy
   test "can get destroy" do
+    assert_difference("Weight.count", -1) do
+      delete :destroy, id: @weight.id
+    end
 
+    assert_redirected_to weights_index_path
   end
 
 end

@@ -1,5 +1,5 @@
 class WeightsController < ApplicationController
-  before_action :set_weight, only: [:show]
+  before_action :set_weight, only: [:show, :destroy]
 
   def index
     @weights = Weight.all
@@ -21,6 +21,13 @@ class WeightsController < ApplicationController
       else
         format.html { render :new }
       end
+    end
+  end
+
+  def destroy
+    @weight.destroy
+    respond_to do |format|
+      format.html { redirect_to weights_index_url }
     end
   end
 

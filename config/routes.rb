@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get 'weights' => 'weights#show'
   get 'weights/index'
   get 'weights/new' => 'weights#new'
-  get 'weights/:id' => 'weights#show'
+  get 'weights/:id' => 'weights#show', as: :weight
+  post 'weights/create'
 
   get 'steps' => 'steps#show'
 

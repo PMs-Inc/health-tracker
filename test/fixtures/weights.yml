@@ -5,5 +5,9 @@ one:
   weight: 9.99
 
 two:
-  date_id: 1
+  date_id: 2
   weight: 9.99
+
+three:
+  date_id: 3
+  weight: 150

@@ -16,24 +16,24 @@ ActiveRecord::Schema.define(version: 20160303203557) do
   create_table "exercises", force: :cascade do |t|
     t.integer  "exercise_type_id"
     t.integer  "date_id"
-    t.decimal  "duration",         precision: 5, scale: 2
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.decimal  "duration", precision: 5, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "meals", force: :cascade do |t|
     t.integer  "calories"
     t.string   "description"
     t.integer  "date_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "weights", force: :cascade do |t|
     t.integer  "date_id"
-    t.decimal  "weight",     precision: 5, scale: 2
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.decimal  "weight", precision: 5, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "steps", force: :cascade do |t|

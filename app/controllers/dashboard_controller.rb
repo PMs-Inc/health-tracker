@@ -28,7 +28,7 @@ class DashboardController < ApplicationController
       @meals.reduce(a){|a, i| a << i}
       @weights.reduce(a){|a, i| a << i}
       @steps.reduce(a){|a, i| a << i}
-      a.sort{|a,b| a.created_at <=> b.created_at}
+      a.sort{|a,b| b.created_at <=> a.created_at}
     end
 
 end

@@ -47,26 +47,27 @@
       </div>
     </div>
 
+<% if @dashboard.show_meal_data || @dashboard.show_exercise_data %>
+  <div class="module">
+    <div class="module-head">
+      <h3>Details for <%= @date %></h3>
+    </div>
+    <div class="module-body">
 
-<div class="module">
-  <div class="module-head">
-    <h3>Details for <%= @date %></h3>
+      <% if @dashboard.show_meal_data %>
+        <p><em>Maybe you should have avoided the <%= @dashboard.most_caloric_meal[:description] %> (<%= @dashboard.most_caloric_meal[:calories]%> calories!)</em></p>
+      <% end %>
+
+      <% if @dashboard.show_exercise_data %>
+        <p><strong>Calories burned for this date: </strong><%= @dashboard.calories_burned %> calories</p>
+        <p><strong>Net calories for this date: </strong><%= @dashboard.net_calories %> calories</p>
+        <p><strong>Total Exercise Time: </strong><%= @dashboard.total_exercise_time %> minutes</p>
+        <p><strong>Average Calories Burned Per Minute Across Activities: </strong><%= @dashboard.avg_calories_burned %> calories</p>
+      <% end %>
+
+    </div>
   </div>
-  <div class="module-body">
-
-    <% if @dashboard.show_meal_data %>
-      <p><em>Maybe you should have avoided the <%= @dashboard.most_caloric_meal[:description] %> (<%= @dashboard.most_caloric_meal[:calories]%> calories!)</em></p>
-    <% end %>
-
-    <% if @dashboard.show_exercise_data %>
-      <p><strong>Calories burned for this date: </strong><%= @dashboard.calories_burned %> calories</p>
-      <p><strong>Net calories for this date: </strong><%= @dashboard.net_calories %> calories</p>
-      <p><strong>Total Exercise Time: </strong><%= @dashboard.total_exercise_time %> minutes</p>
-      <p><strong>Average Calories Burned Per Minute Across Activities: </strong><%= @dashboard.avg_calories_burned %> calories</p>
-    <% end %>
-
-  </div>
-</div>
+<% end %>
 
 <div class="module">
   <div class="module-head">

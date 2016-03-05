@@ -53,13 +53,52 @@
   <%= render 'steps/listing', :step => @steps %>
   <%= render 'weights/listing', :weight => @weights %>
 
+</div>
 
 
+  <div class="module-head">
+    <h3>Today's activity</h3>
+  </div>
+  <div class="module-body">
+    <div class="stream-list">
+      <% @activities.each do |activity| %>
+      <div class="media stream">
+        <% if activity.class == Exercise %>
+          <a href=<%= exercises_path %> class="media-avatar medium pull-left"><img src="https://cdn3.iconfinder.com/data/icons/bodybuilding/500/barbell_dumb-bell_dumbbell_exercise_fitness_strength_weight-512.png"></i></a>
+        <% elsif activity.class == Meal %>
+          <a href=<%= meals_path %> class="media-avatar medium pull-left"><img src="https://cdn0.iconfinder.com/data/icons/thin-food-cooking/24/thin-0871_meal_eating_restaurant_offer-512.png"></i></a>
+        <% elsif activity.class == Weight %>
+          <a href=<%= weights_path %> class="media-avatar medium pull-left"><img src="https://cdn0.iconfinder.com/data/icons/thin-medicine-health/24/thin-0827_body_weight_fitness_health_fat-512.png"></i></a>
+        <% elsif activity.class == Step %>
+          <a href=<%= steps_path %> class="media-avatar medium pull-left"><img src="https://cdn0.iconfinder.com/data/icons/thin-home-living/57/thin-284_foot_steps_dance-512.png"></i></a>
+        <% else %>
+          ERRORRRRR
+        <% end %>
+        <div class="media-body">
+          <div class="stream-headline">
+            <h5 class="stream-author">
+              <%= activity.class %>
+              <small><%= Day.find(activity.date_id).date %> </small>
+            </h5>
+            <div class="stream-text">
+              <% if activity.class == Exercise %>
+                <%= activity.exercise_type.name %> for <%= activity.duration %> minutes
+              <% elsif activity.class == Meal %>
+                Ate <%= activity.description %>, <%= activity.calories %> calories
+              <% elsif activity.class == Weight %>
+                Weigh-in at <%= activity.weight %> lbs.
+              <% elsif activity.class == Step %>
+                <%= activity.step_count %> steps!
+              <% else %>
+                ERRORRRRR
+              <% end %>
+            </div>
+          </div><!--/.stream-headline-->
 
-
-
+        </div>
       </div>
+      <% end %>
     </div>
+  </div>
 
-
-      </div>
+</div>

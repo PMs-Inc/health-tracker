@@ -1,58 +1,65 @@
+<div class="module-head">
+  <h2>Dashboard</h2>
+</div>
+<div class="module-body">
 
-<h2>Dashboard</h2>
+  <% if params[:height] %>
+    <h4 class="green">Your BMR is: <%= @bmr %></h4>
+  <% else %>
+    <h4>Calculate your BMR:</h4>
+    <%= render 'form' %>
+  <% end %>
 
-<% if params[:height] %>
-  <h4 class="green">Your BMR is: <%= @bmr %></h4>
-<% else %>
-  <h4>Calculate your BMR:</h4>
-  <%= render 'form' %>
-<% end %>
+  <% if @dashboard.show_weight_data %>
+    <p><strong>Current Weight: </strong><%= @dashboard.current_weight %> lbs.
+      <% if @dashboard.weight_delta[:percent] < 0 %>
+        <span class="green">&Delta; <%= @dashboard.weight_delta[:pounds] %> lbs, <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
+      <% else %>
+         <span class="red">&Delta; <%= @dashboard.weight_delta[:pounds] %> lbs, <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
+      <% end %>
+    </p>
+  <% else %>
+    <p><strong> Please <%= link_to 'enter a weight value.', weights_new_path%></strong></p>
+  <% end %>
 
+  <% if @dashboard.show_meal_data %>
+    <p><strong>Calories consumed on this date: </strong><%= @dashboard.calories_consumed %>.</p>
+    <p><em>Maybe you should have avoided the <%= @dashboard.most_caloric_meal[:description] %> (<%= @dashboard.most_caloric_meal[:calories]%> calories!)</em></p>
+  <% end %>
 
-<p><%= link_to 'View all exercises', exercises_path %></p>
-<p><%= link_to 'View step counter', steps_path %></p>
-<p><%= link_to 'View all meals', meals_path %></p>
-<p><%= link_to 'View all weight entries', weights_path %></p>
+  <% if @dashboard.show_exercise_data %>
+    <p><strong>Calories burned for this date: </strong><%= @dashboard.calories_burned %>.</p>
+    <p><strong>Net calories for this date: </strong><%= @dashboard.net_calories %>.</p>
+    <p><strong>Total Exercise Time: </strong><%= @dashboard.total_exercise_time %>.</p>
+    <p><strong>Average Calories Burned Per Minute Across Activities: </strong><%= @dashboard.avg_calories_burned %>.</p>
+  <% end %>
 
-<% if @dashboard.show_weight_data %>
-  <p><strong>Current Weight: </strong><%= @dashboard.current_weight %> lbs.
-    <% if @dashboard.weight_delta[:percent] < 0 %>
-      <span class="green">&Delta; <%= @dashboard.weight_delta[:pounds] %> lbs, <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
-    <% else %>
-       <span class="red">&Delta; <%= @dashboard.weight_delta[:pounds] %> lbs, <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
-    <% end %>
-  </p>
-<% else %>
-  <p><strong> Please <%= link_to 'enter a weight value.', weights_new_path%></strong></p>
-<% end %>
-
-<% if @dashboard.show_meal_data %>
-  <p><strong>Calories consumed on this date: </strong><%= @dashboard.calories_consumed %>.</p>
-  <p><em>Maybe you should have avoided the <%= @dashboard.most_caloric_meal[:description] %> (<%= @dashboard.most_caloric_meal[:calories]%> calories!)</em></p>
-<% end %>
-
-<% if @dashboard.show_exercise_data %>
-  <p><strong>Calories burned for this date: </strong><%= @dashboard.calories_burned %>.</p>
-  <p><strong>Net calories for this date: </strong><%= @dashboard.net_calories %>.</p>
-  <p><strong>Total Exercise Time: </strong><%= @dashboard.total_exercise_time %>.</p>
-  <p><strong>Average Calories Burned Per Minute Across Activities: </strong><%= @dashboard.avg_calories_burned %>.</p>
-<% end %>
-
-<% if @dashboard.show_step_data %>
-  <p><strong>Total steps taken: </strong><%= @dashboard.steps_count %>.</p>
-<% end %>
+  <% if @dashboard.show_step_data %>
+    <p><strong>Total steps taken: </strong><%= @dashboard.steps_count %>.</p>
+  <% end %>
 
 
-<h4>New Exercise</h4>
-<%= render 'exercises/form', :exercise => @exercise %>
-<h4>New Meal</h4>
-<%= render 'meals/form', :meal => @meal %>
-<h4>New Step</h4>
-<%= render 'steps/form', :step => @step %>
-<h4>New Weight</h4>
-<%= render 'weights/form', :weight => @weight %>
+  <h4>New Exercise</h4>
+  <%= render 'exercises/form', :exercise => @exercise %>
+  <h4>New Meal</h4>
+  <%= render 'meals/form', :meal => @meal %>
+  <h4>New Step</h4>
+  <%= render 'steps/form', :step => @step %>
+  <h4>New Weight</h4>
+  <%= render 'weights/form', :weight => @weight %>
 
-<%= render 'exercises/list', :exercises => @exercises %>
-<%= render 'meals/list', :meals => @meals %>
-<%= render 'steps/listing', :step => @steps %>
-<%= render 'weights/listing', :weight => @weights %>
+  <%= render 'exercises/list', :exercises => @exercises %>
+  <%= render 'meals/list', :meals => @meals %>
+  <%= render 'steps/listing', :step => @steps %>
+  <%= render 'weights/listing', :weight => @weights %>
+
+
+
+
+
+
+      </div>
+    </div>
+
+
+      </div>

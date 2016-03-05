@@ -1,7 +1,7 @@
-<form class="form-horizontal row-fluid">
-  <%= form_for(@step) do |f| %>
+<!-- <form class="form-horizontal row-fluid"> -->
+  <%= form_for @step,  :html => {class: 'form-horizontal row-fluid'} do |f| %>
     <% if @step.errors.any? %>
-      <div id="error_explanation">
+      <div class="alert alert-error">
         <h2><%= pluralize(@step.errors.count, "error") %> prohibited this step count from being saved:</h2>
 
         <ul>
@@ -24,13 +24,14 @@
         <%= f.label :date_id, class: 'control-label' %>
         <div class="controls">
           <%= f.select :date_id, @days, class: 'span8'%>
-        <div>
+        </div>
       </div>
     </div>
     <div class="control-group">
-      <div class="controls">
+      <div class="actions">
         <%= f.submit class: 'btn-primary' %>
       </div>
     </div>
   <% end %>
-</form>
+<!-- </form> -->
+<br>

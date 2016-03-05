@@ -4,7 +4,7 @@
 <div class="module-body">
 
   <% if params[:height] %>
-    <h4 class="green">Your BMR is: <%= @bmr %></h4>
+    <h4 class="text-success">Your BMR is: <%= @bmr %></h4>
   <% else %>
     <h4>Calculate your BMR:</h4>
     <%= render 'form' %>
@@ -13,9 +13,9 @@
   <% if @dashboard.show_weight_data %>
     <p><strong>Current Weight: </strong><%= @dashboard.current_weight %> lbs.
       <% if @dashboard.weight_delta[:percent] < 0 %>
-        <span class="green">&Delta; <%= @dashboard.weight_delta[:pounds] %> lbs, <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
+        <span class="text-success">&Delta; <%= @dashboard.weight_delta[:pounds] %> lbs, <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
       <% else %>
-         <span class="red">&Delta; <%= @dashboard.weight_delta[:pounds] %> lbs, <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
+         <span class="text-error">&Delta; <%= @dashboard.weight_delta[:pounds] %> lbs, <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
       <% end %>
     </p>
   <% else %>

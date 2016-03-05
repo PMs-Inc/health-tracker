@@ -1,34 +1,68 @@
+    <div class="btn-controls">
+      <div class="btn-box-row row-fluid">
+          <a href="#" class="btn-box big span4">
+            <i class="icon-table"></i>
+            <% if @dashboard.show_weight_data %>
+              <b>
+                <%= @dashboard.current_weight %> lbs.
+              </b>
+              <p class="text-muted">
+                <% if @dashboard.weight_delta[:percent] < 0 %>
+                  <span class="text-success">&Delta; <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
+                <% else %>
+                  <span class="text-error">&Delta; <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
+                <% end %>
+              </p>
+            <% else %>
+              <p><strong> Please <%= link_to 'enter a weight value.', weights_new_path%></strong></p>
+            <% end %>
+          </a>
+
+          <a href="#" class="btn-box big span4">
+            <i class="icon-food"></i>
+            <% if @dashboard.show_meal_data %>
+              <b><%= @dashboard.calories_consumed %></b>
+              <p class="text-muted">
+                  Calories consumed
+              </p>
+            <% else %>
+              <b>0</b>
+              <p class="text-muted">
+                  Calories consumed
+              </p>
+            <% end %>
+          </a>
+
+          <a href="#" class="btn-box big span4">
+            <i class="icon-check"></i>
+            <% if @dashboard.show_step_data %>
+              <b><%= @dashboard.steps_count %></b>
+            <% else %>
+              <b>0</b>
+            <% end %>
+            <p class="text-muted">
+              Steps taken
+            </p>
+          </a>
+      </div>
+    </div>
+
+
+<div class="module">
   <div class="module-head">
-    <h2>Dashboard</h2>
+    <h2>Details for <%= @date %></h2>
   </div>
   <div class="module-body">
 
-    <% if @dashboard.show_weight_data %>
-      <p><strong>Current Weight: </strong><%= @dashboard.current_weight %> lbs.
-        <% if @dashboard.weight_delta[:percent] < 0 %>
-          <span class="text-success">&Delta; <%= @dashboard.weight_delta[:pounds] %> lbs, <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
-        <% else %>
-           <span class="text-error">&Delta; <%= @dashboard.weight_delta[:pounds] %> lbs, <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
-        <% end %>
-      </p>
-    <% else %>
-      <p><strong> Please <%= link_to 'enter a weight value.', weights_new_path%></strong></p>
-    <% end %>
-
     <% if @dashboard.show_meal_data %>
-      <p><strong>Calories consumed on this date: </strong><%= @dashboard.calories_consumed %>.</p>
       <p><em>Maybe you should have avoided the <%= @dashboard.most_caloric_meal[:description] %> (<%= @dashboard.most_caloric_meal[:calories]%> calories!)</em></p>
     <% end %>
 
     <% if @dashboard.show_exercise_data %>
-      <p><strong>Calories burned for this date: </strong><%= @dashboard.calories_burned %>.</p>
-      <p><strong>Net calories for this date: </strong><%= @dashboard.net_calories %>.</p>
-      <p><strong>Total Exercise Time: </strong><%= @dashboard.total_exercise_time %>.</p>
-      <p><strong>Average Calories Burned Per Minute Across Activities: </strong><%= @dashboard.avg_calories_burned %>.</p>
-    <% end %>
-
-    <% if @dashboard.show_step_data %>
-      <p><strong>Total steps taken: </strong><%= @dashboard.steps_count %>.</p>
+      <p><strong>Calories burned for this date: </strong><%= @dashboard.calories_burned %> calories</p>
+      <p><strong>Net calories for this date: </strong><%= @dashboard.net_calories %> calories</p>
+      <p><strong>Total Exercise Time: </strong><%= @dashboard.total_exercise_time %> minutes</p>
+      <p><strong>Average Calories Burned Per Minute Across Activities: </strong><%= @dashboard.avg_calories_burned %> calories</p>
     <% end %>
 
   </div>

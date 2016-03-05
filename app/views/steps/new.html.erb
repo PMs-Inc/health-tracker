@@ -1,9 +1,12 @@
-<div class="module-head">
-  <h2>New Steps Entry</h2>
+<div class="module">
+  <div class="module-head">
+    <h2>New Steps Entry</h2>
+  </div>
+  <div class="module-body">
+
+
+  <%= render 'form' %>
+
+  <%= link_to 'Back', steps_path %>
+  </div>
 </div>
-<div class="module-body">
-
-
-<%= render 'form' %>
-
-<%= link_to 'Back', steps_path %>

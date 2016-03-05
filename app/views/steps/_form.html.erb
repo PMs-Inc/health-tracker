@@ -1,37 +1,42 @@
 <!-- <form class="form-horizontal row-fluid"> -->
-  <%= form_for @step,  :html => {class: 'form-horizontal row-fluid'} do |f| %>
-    <% if @step.errors.any? %>
-      <div class="alert alert-error">
-        <h2><%= pluralize(@step.errors.count, "error") %> prohibited this step count from being saved:</h2>
+<%= form_for @step,  :html => {class: 'form-horizontal row-fluid'} do |f| %>
+  <% if @step.errors.any? %>
+    <div class="alert alert-error">
+      <h2><%= pluralize(@step.errors.count, "error") %> prohibited this step count from being saved:</h2>
 
-        <ul>
-          <% @step.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-    <div class="control-group">
-      <div class="field">
-        <%= f.label :step_count, class: 'control-label' %>
-        <div class="controls">
-          <%= f.number_field :step_count, class: 'span8' %>
-        </div>
+      <ul>
+        <% @step.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="control-group">
+    <div class="field">
+      <%= f.label :date_id, class: 'control-label' %>
+      <div class="controls">
+        <%= f.select :date_id, @days, class: 'span8'%>
       </div>
     </div>
-    <div class="control-group">
-      <div class="field">
-        <%= f.label :date_id, class: 'control-label' %>
-        <div class="controls">
-          <%= f.select :date_id, @days, class: 'span8'%>
-        </div>
+  </div>
+
+  <div class="control-group">
+    <div class="field">
+      <%= f.label :step_count, class: 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :step_count, class: 'span8' %>
       </div>
     </div>
-    <div class="control-group">
+  </div>
+
+  <div class="control-group align-center">
+    <div class="center">
       <div class="actions">
         <%= f.submit class: "btn-primary" %>
       </div>
     </div>
-  <% end %>
+  </div>
+
+<% end %>
 <!-- </form> -->
 <br>

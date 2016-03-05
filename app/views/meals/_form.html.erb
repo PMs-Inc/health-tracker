@@ -1,6 +1,6 @@
-<%= form_for(@meal) do |f| %>
+<%= form_for @meal, :html => {class: 'form-horizontal row-fluid'} do |f| %>
   <% if @meal.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-error">
       <h2><%= pluralize(@meal.errors.count, "error") %> prohibited this meal from being saved:</h2>
 
       <ul>
@@ -11,19 +11,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :calories %><br>
-    <%= f.number_field :calories %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.select :date_id, @days%><br>
+  <div class="control-group">
+    <div class="field">
+      <%= f.label :date_id, class: 'control-label' %>
+      <div class="controls">
+        <%= f.select :date_id, @days, class: 'span8'%>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit class: 'btn-primary' %>
+  <div class="control-group">
+    <div class="field">
+      <%= f.label :calories, class: 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :calories, class: 'span8' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="field">
+      <%= f.label :description, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :description, class: 'span8' %>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div>
+    <div class="actions align-center">
+      <%= f.submit class: 'btn-primary' %>
+    </div>
   </div>
 <% end %>
+<br>

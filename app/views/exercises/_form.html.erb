@@ -1,6 +1,6 @@
-<%= form_for(@exercise) do |f| %>
+<%= form_for @exercise, :html => {class: 'form-horizontal row-fluid'} do |f| %>
   <% if @exercise.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-error">
       <h2><%= pluralize(@exercise.errors.count, "error") %> prohibited this exercise from being saved:</h2>
 
       <ul>
@@ -11,17 +11,38 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.select :exercise_type_id, @options%><br>
+  <div class="control-group">
+    <div class="field">
+      <%= f.label :date_id, class: 'control-label' %>
+      <div class="controls">
+        <%= f.select :date_id, @days, class: 'span8'%>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.select :date_id, @days%><br>
+
+  <div class="control-group">
+    <div class="field">
+      <%= f.label :exercise_type_id, class: 'control-label' %>
+      <div class="controls">
+        <%= f.select :exercise_type_id, @options, class: 'span8' %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :duration %><br>
-    <%= f.text_field :duration %>
+
+  <div class="control-group">
+    <div class="field">
+      <%= f.label :duration, class: 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :duration, class: 'span8' %>
+      </div>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="control-group align-center">
+    <div class="actions">
+      <%= f.submit class: "btn-primary" %>
+    </div>
   </div>
+
 <% end %>
+<br>

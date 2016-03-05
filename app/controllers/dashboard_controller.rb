@@ -16,6 +16,12 @@ class DashboardController < ApplicationController
     @steps = Step.where(date_id: date_int)
     @days = Day.get_days
 
+    if date_int == nil or date_int == 0
+      @date = Day.where(date: Time.now.to_date).first.date
+    else
+      @date = Day.find(date_int).date
+    end
+
     @activities = get_activity_list
 
     @bmr = @dashboard.calculate_bmr(params[:weight].to_i, params[:height].to_i, params[:age].to_i).round(2)

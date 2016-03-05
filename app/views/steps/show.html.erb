@@ -1,19 +1,21 @@
-<div class="module-head">
-  <h2>Step Details</h2>
+<div class="module">
+  <div class="module-head">
+    <h2>Step Details</h2>
+  </div>
+  <div class="module-body">
+
+  <p id="notice"><%= notice %></p>
+
+
+  <p>
+    <strong>Steps count:</strong>
+    <%= @step.step_count %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= @step.date_id %>
+  </p>
+
+  <%= link_to 'Back', steps_path %>
 </div>
-<div class="module-body">
-
-<p id="notice"><%= notice %></p>
-
-
-<p>
-  <strong>Steps count:</strong>
-  <%= @step.step_count %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @step.date_id %>
-</p>
-
-<%= link_to 'Back', steps_path %>

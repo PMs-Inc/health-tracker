@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   post 'weights' => 'weights#create'
   delete 'weights/:id' => 'weights#destroy', as: :weight_destroy
 
-
   root 'dashboard#show'
   get 'dashboard/show'
   post 'dashboard' => 'dashboard#show', as: :dashboard

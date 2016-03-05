@@ -18,7 +18,7 @@ class DashboardController < ApplicationController
 
     @activities = get_activity_list
 
-    @bmr = @dashboard.calculate_bmr(params[:weight].to_i, params[:height].to_i, params[:age].to_i)
+    @bmr = @dashboard.calculate_bmr(params[:weight].to_i, params[:height].to_i, params[:age].to_i).round(2)
   end
 
   private

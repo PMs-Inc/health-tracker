@@ -1,96 +1,115 @@
-<div class="module-head">
-  <h2>Dashboard</h2>
-</div>
-<div class="module-body">
-
-  <% if params[:height] %>
-    <h4 class="text-success">Your BMR is: <%= @bmr %></h4>
-  <% else %>
-    <h4>Calculate your BMR:</h4>
-    <%= render 'form' %>
-  <% end %>
-
-  <% if @dashboard.show_weight_data %>
-    <p><strong>Current Weight: </strong><%= @dashboard.current_weight %> lbs.
-      <% if @dashboard.weight_delta[:percent] < 0 %>
-        <span class="text-success">&Delta; <%= @dashboard.weight_delta[:pounds] %> lbs, <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
-      <% else %>
-         <span class="text-error">&Delta; <%= @dashboard.weight_delta[:pounds] %> lbs, <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
-      <% end %>
-    </p>
-  <% else %>
-    <p><strong> Please <%= link_to 'enter a weight value.', weights_new_path%></strong></p>
-  <% end %>
-
-  <% if @dashboard.show_meal_data %>
-    <p><strong>Calories consumed on this date: </strong><%= @dashboard.calories_consumed %>.</p>
-    <p><em>Maybe you should have avoided the <%= @dashboard.most_caloric_meal[:description] %> (<%= @dashboard.most_caloric_meal[:calories]%> calories!)</em></p>
-  <% end %>
-
-  <% if @dashboard.show_exercise_data %>
-    <p><strong>Calories burned for this date: </strong><%= @dashboard.calories_burned %>.</p>
-    <p><strong>Net calories for this date: </strong><%= @dashboard.net_calories %>.</p>
-    <p><strong>Total Exercise Time: </strong><%= @dashboard.total_exercise_time %>.</p>
-    <p><strong>Average Calories Burned Per Minute Across Activities: </strong><%= @dashboard.avg_calories_burned %>.</p>
-  <% end %>
-
-  <% if @dashboard.show_step_data %>
-    <p><strong>Total steps taken: </strong><%= @dashboard.steps_count %>.</p>
-  <% end %>
-
-
-  <h4>New Exercise</h4>
-  <%= render 'exercises/form', :exercise => @exercise %>
-  <h4>New Meal</h4>
-  <%= render 'meals/form', :meal => @meal %>
-  <h4>New Step</h4>
-  <%= render 'steps/form', :step => @step %>
-  <h4>New Weight</h4>
-  <%= render 'weights/form', :weight => @weight %>
-</div>
-
-
   <div class="module-head">
-    <h3>Today's activity</h3>
+    <h2>Dashboard</h2>
   </div>
   <div class="module-body">
-    <% @activities.each do |activity| %>
-    <div class="media stream">
-      <% if activity.class == Exercise %>
-        <a href=<%= exercises_path %> class="media-avatar medium pull-left"><img src="https://cdn3.iconfinder.com/data/icons/bodybuilding/500/barbell_dumb-bell_dumbbell_exercise_fitness_strength_weight-512.png"></i></a>
-      <% elsif activity.class == Meal %>
-        <a href=<%= meals_path %> class="media-avatar medium pull-left"><img src="https://cdn0.iconfinder.com/data/icons/thin-food-cooking/24/thin-0871_meal_eating_restaurant_offer-512.png"></i></a>
-      <% elsif activity.class == Weight %>
-        <a href=<%= weights_path %> class="media-avatar medium pull-left"><img src="https://cdn0.iconfinder.com/data/icons/thin-medicine-health/24/thin-0827_body_weight_fitness_health_fat-512.png"></i></a>
-      <% elsif activity.class == Step %>
-        <a href=<%= steps_path %> class="media-avatar medium pull-left"><img src="https://cdn0.iconfinder.com/data/icons/thin-home-living/57/thin-284_foot_steps_dance-512.png"></i></a>
-      <% else %>
-        ERRORRRRR
-      <% end %>
-      <div class="media-body">
-        <div class="stream-headline">
-          <h5 class="stream-author">
-            <%= activity.class %>
-            <small><%= Day.find(activity.date_id).date %> </small>
-          </h5>
-          <div class="stream-text">
-            <% if activity.class == Exercise %>
-              <%= activity.exercise_type.name %> for <%= activity.duration %> minutes
-            <% elsif activity.class == Meal %>
-              Ate <%= activity.description %>, <%= activity.calories %> calories
-            <% elsif activity.class == Weight %>
-              Weigh-in at <%= activity.weight %> lbs.
-            <% elsif activity.class == Step %>
-              <%= activity.step_count %> steps!
-            <% else %>
-              ERRORRRRR
-            <% end %>
-          </div>
-        </div><!--/.stream-headline-->
 
-      </div>
-    </div>
+    <% if @dashboard.show_weight_data %>
+      <p><strong>Current Weight: </strong><%= @dashboard.current_weight %> lbs.
+        <% if @dashboard.weight_delta[:percent] < 0 %>
+          <span class="text-success">&Delta; <%= @dashboard.weight_delta[:pounds] %> lbs, <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
+        <% else %>
+           <span class="text-error">&Delta; <%= @dashboard.weight_delta[:pounds] %> lbs, <%= @dashboard.weight_delta[:percent] * 100 %>%</span>
+        <% end %>
+      </p>
+    <% else %>
+      <p><strong> Please <%= link_to 'enter a weight value.', weights_new_path%></strong></p>
+    <% end %>
+
+    <% if @dashboard.show_meal_data %>
+      <p><strong>Calories consumed on this date: </strong><%= @dashboard.calories_consumed %>.</p>
+      <p><em>Maybe you should have avoided the <%= @dashboard.most_caloric_meal[:description] %> (<%= @dashboard.most_caloric_meal[:calories]%> calories!)</em></p>
+    <% end %>
+
+    <% if @dashboard.show_exercise_data %>
+      <p><strong>Calories burned for this date: </strong><%= @dashboard.calories_burned %>.</p>
+      <p><strong>Net calories for this date: </strong><%= @dashboard.net_calories %>.</p>
+      <p><strong>Total Exercise Time: </strong><%= @dashboard.total_exercise_time %>.</p>
+      <p><strong>Average Calories Burned Per Minute Across Activities: </strong><%= @dashboard.avg_calories_burned %>.</p>
+    <% end %>
+
+    <% if @dashboard.show_step_data %>
+      <p><strong>Total steps taken: </strong><%= @dashboard.steps_count %>.</p>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="module">
+  <div class="module-head">
+    <h3>Today's activity log</h3>
+  </div>
+  <div class="module-body">
+      <% if @activities.length > 0 %>
+        <% @activities.each do |activity| %>
+        <div class="media stream">
+          <% if activity.class == Exercise %>
+            <a href=<%= exercises_path %> class="media-avatar medium pull-left"><img src="https://cdn3.iconfinder.com/data/icons/bodybuilding/500/barbell_dumb-bell_dumbbell_exercise_fitness_strength_weight-512.png"></i></a>
+          <% elsif activity.class == Meal %>
+            <a href=<%= meals_path %> class="media-avatar medium pull-left"><img src="https://cdn0.iconfinder.com/data/icons/thin-food-cooking/24/thin-0871_meal_eating_restaurant_offer-512.png"></i></a>
+          <% elsif activity.class == Weight %>
+            <a href=<%= weights_path %> class="media-avatar medium pull-left"><img src="https://cdn0.iconfinder.com/data/icons/thin-medicine-health/24/thin-0827_body_weight_fitness_health_fat-512.png"></i></a>
+          <% elsif activity.class == Step %>
+            <a href=<%= steps_path %> class="media-avatar medium pull-left"><img src="https://cdn0.iconfinder.com/data/icons/thin-home-living/57/thin-284_foot_steps_dance-512.png"></i></a>
+          <% else %>
+            ERRORRRRR
+          <% end %>
+          <div class="media-body">
+            <div class="stream-headline">
+              <h5 class="stream-author">
+                <%= activity.class %> Log
+                <small><%= Day.find(activity.date_id).date %> </small>
+              </h5>
+              <div class="stream-text">
+                <% if activity.class == Exercise %>
+                  <%= activity.exercise_type.name %> for <%= activity.duration %> minutes
+                <% elsif activity.class == Meal %>
+                  Ate <%= activity.description %>, <%= activity.calories %> calories
+                <% elsif activity.class == Weight %>
+                  Weigh-in at <%= activity.weight %> lbs.
+                <% elsif activity.class == Step %>
+                  <%= activity.step_count %> steps!
+                <% else %>
+                  ERRORRRRR
+                <% end %>
+              </div>
+            </div><!--/.stream-headline-->
+
+          </div>
+        </div>
+        <% end %>
+      <% else %>
+        <h4>No activities logged today, enter some below!</h4>
+      <% end %>
+  </div>
+</div>
+
+<div class="module">
+  <div class="module-head">
+    <h3>Calculate basal metabolic rate (BMR)</h3>
+  </div>
+  <div class="module-body">
+    <% if params[:height] %>
+      <h4 class="text-success">Your BMR is: <%= @bmr %></h4>
+    <% else %>
+      <h4>Calculate your BMR:</h4>
+      <%= render 'form' %>
     <% end %>
   </div>
+</div>
 
+<div class="module">
+  <div class="module-head">
+    <h3>Enter new activity</h3>
+  </div>
+  <div class="module-body">
+
+    <h4>New Exercise</h4>
+    <%= render 'exercises/form', :exercise => @exercise %>
+    <h4>New Meal</h4>
+    <%= render 'meals/form', :meal => @meal %>
+    <h4>New Step</h4>
+    <%= render 'steps/form', :step => @step %>
+    <h4>New Weight</h4>
+    <%= render 'weights/form', :weight => @weight %>
+  </div>
 </div>

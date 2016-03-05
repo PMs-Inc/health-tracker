@@ -1,6 +1,29 @@
-<%= form_tag dashboard_show_path do %>
+<%= form_tag dashboard_path, :html => {class: 'form-horizontal row-fluid'} do %>
+
   <%= hidden_field_tag :weight, @dashboard.current_weight %>
-  Enter height (inches): <%= text_field_tag :height %><br>
-  Enter age (years): <%= text_field_tag :age %>
-  <%= button_tag "Get BMR", {class: 'btn-primary'} %>
+
+  <div class="control-group">
+    <div class="field">
+      <span class="control-label">Enter height (inches):</span>
+      <div class="controls">
+        <%= number_field_tag :height, {class: "span8"} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="field">
+      <span class="control-label">Enter age (years):</span>
+      <div class="controls">
+        <%= number_field_tag :age, {class: "span8"} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="actions">
+      <%= button_tag "Get BMR", {class: "btn-primary"} %>
+    </div>
+  </div>
+
 <% end %>

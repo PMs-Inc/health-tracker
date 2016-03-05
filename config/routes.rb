@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'dashboard/show'
   root 'dashboard#show'
-  post 'dashboard/show'
+  post 'dashboard' => 'dashboard#show', as: :dashboard
 
   get 'steps' => 'steps#index', as: :steps
   post 'steps' => 'steps#create'

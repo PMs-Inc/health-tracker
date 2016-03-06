@@ -14,7 +14,7 @@
         <% @steps.each do |step| %>
           <tr>
             <td><%= step.step_count %></td>
-            <td><%= step.date_id %></td>
+            <td><%= step.day.date %></td>
             <td><%= link_to 'Show', step %></td>
             <td><%= link_to 'Destroy', step, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>

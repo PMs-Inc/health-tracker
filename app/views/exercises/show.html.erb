@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="module">
+  <div class="module-head">
+    <h2>Exercise Details</h2>
+  </div>
+  <div class="module-body">
 
-<p>
-  <strong>Exercise type:</strong>
-  <%= @exercise.exercise_type_id %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @exercise.date_id %>
-</p>
+  <p>
+    <strong>Exercise type:</strong>
+    <%= @exercise.exercise_type_id %>
+  </p>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @exercise.duration %>
-</p>
+  <p>
+    <strong>Date:</strong>
+    <%= @exercise.day.date %>
+  </p>
 
-<%= link_to 'Edit', edit_exercise_path(@exercise) %> |
-<%= link_to 'Back', exercises_path %>
+  <p>
+    <strong>Duration:</strong>
+    <%= @exercise.duration %>
+  </p>
+
+  <%= link_to 'Edit', edit_exercise_path(@exercise) %> |
+  <%= link_to 'Back', exercises_path %>
+</div>

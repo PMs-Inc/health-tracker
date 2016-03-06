@@ -14,7 +14,7 @@
 
   <p>
     <strong>Date:</strong>
-    <%= @weight.date_id %>
+    <%= @weight.day ? @weight.day.date : 0 %>
   </p>
 
   <%= link_to 'Back to list', weights_path %>

@@ -1,7 +1,7 @@
 <h4>Listing Exercises</h4>
 
 <% if @exercises.count > 0 %>
-  <table>
+  <table class="table table-condensed">
     <thead>
       <tr>
         <th>Exercise type</th>
@@ -15,7 +15,7 @@
       <% @exercises.each do |exercise| %>
         <tr>
           <td><%= exercise.exercise_type_id %></td>
-          <td><%= exercise.date_id %></td>
+          <td><%= exercise.day.date %></td>
           <td><%= exercise.duration %></td>
           <td><%= link_to 'Show', exercise %></td>
           <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>

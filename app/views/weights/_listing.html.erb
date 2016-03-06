@@ -13,7 +13,7 @@
     <tbody>
       <% @weights.each do |weight| %>
         <tr>
-          <td><%= weight.date_id %></td>
+          <td><%= weight.day ? weight.day.date : 0 %></td>
           <td><%= weight.weight %></td>
           <td><%= link_to 'Show', weight %></td>
           <td><%= link_to 'Destroy', weight, method: :delete, data: { confirm: 'Are you sure?' } %></td>

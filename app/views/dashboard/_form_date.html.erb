@@ -1,0 +1,18 @@
+<%= form_tag dashboard_path, :html => {class: 'form-horizontal row-fluid'} do %>
+
+  <div class="control-group">
+    <div class="field">
+      <span class="control-label">Select Date:</span>
+      <div class="controls">
+        <%= select_tag "date", options_for_select(@days)%>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="actions">
+      <%= button_tag "See Results", {class: "btn-primary"} %>
+    </div>
+  </div>
+
+<% end %>

@@ -28,7 +28,11 @@ class Dashboard
   end
 
   def current_weight
-    Weight.order(:date_id).last.weight
+    if Weight.count > 1
+      Weight.order(:date_id)[1].weight
+    else
+      Weight.order(:date_id).last.weight
+    end
   end
 
   def calories_consumed
@@ -55,9 +59,13 @@ class Dashboard
 
   def weight_delta
     number = Weight.order(:date_id).count
-    delta_percent = ((Weight.order(:date_id)[number-1].weight - Weight.order(:date_id)[number-2].weight) / Weight.order(:date_id)[number-1].weight).round(3)
-    delta_pounds = Weight.order(:date_id)[number-1].weight - Weight.order(:date_id)[number-2].weight
-    {percent: delta_percent, pounds: delta_pounds}
+    if number > 1
+      delta_percent = ((Weight.order(date_id: :desc)[number-2].weight - Weight.order(date_id: :desc)[number-3].weight) / Weight.order(date_id: :desc)[number-2].weight).round(3)
+      delta_pounds = Weight.order(date_id: :desc)[number-2].weight - Weight.order(date_id: :desc)[number-3].weight
+      {percent: delta_percent, pounds: delta_pounds}
+    else
+      {percent: 0, pounds: 0}
+    end  
   end
 
   def most_caloric_meal

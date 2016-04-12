@@ -1,5 +1,7 @@
 class WeightsController < ApplicationController
   before_action :set_weight, only: [:show, :destroy]
+  before_action :authenticate_user!
+
 
   def index
     @weights = Weight.all

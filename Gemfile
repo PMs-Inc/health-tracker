@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'puma'
+gem 'devise'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'

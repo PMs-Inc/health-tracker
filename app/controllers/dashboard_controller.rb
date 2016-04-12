@@ -1,4 +1,6 @@
 class DashboardController < ApplicationController
+  before_action :authenticate_user!
+
   def show
 
     date_int = params[:date].to_i
@@ -17,7 +19,7 @@ class DashboardController < ApplicationController
     @days = Day.get_days
 
     if date_int == nil or date_int == 0
-      @date = Day.where(date: Time.now.to_date).first.date
+      @date = Day.where(date: Time.now.to_date).first
     else
       @date = Day.find(date_int).date
     end

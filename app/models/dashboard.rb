@@ -4,11 +4,12 @@ class Dashboard
   end
 
   def records_exist?(record_class)
-    !record_class.where(date_id: @date).empty?
+    !record_class.where(user: User.current_user).where(date_id: @date).empty?
   end
 
   def show_weight_data
-    Weight.count > 0
+    User.current_user.weights.count > 0
+    # Weight.count > 0
   end
 
   def show_meal_data
@@ -24,23 +25,23 @@ class Dashboard
   end
 
   def steps_count
-    Step.where(date_id: @date).sum(:step_count)
+    Step.where(user: User.current_user).where(date_id: @date).sum(:step_count)
   end
 
   def current_weight
-    if Weight.count > 1
-      Weight.order(:date_id)[1].weight
+    if User.current_user.weights.count > 1
+      Weight.where(user: User.current_user).order(:date_id)[1].weight
     else
-      Weight.order(:date_id).last.weight
+      Weight.where(user: User.current_user).order(:date_id).last.weight
     end
   end
 
   def calories_consumed
-    meal = Meal.group(:date_id).sum(:calories)[@date]
+    meal = Meal.where(user: User.current_user).group(:date_id).sum(:calories)[@date]
   end
 
   def calories_burned
-    exercises = Exercise.where(date_id: @date).group(:exercise_type_id).sum(:duration)
+    exercises = Exercise.where(user: User.current_user).where(date_id: @date).group(:exercise_type_id).sum(:duration)
     exercise_types = ExerciseType.select {|t| exercises[t.id]}
     total = exercise_types.reduce(0) {|sum, t| sum + (exercises[t.id] * t.calories_per_min) }
   end
@@ -50,7 +51,7 @@ class Dashboard
   end
 
   def total_exercise_time
-    Exercise.where(date_id: @date).sum(:duration)
+    Exercise.where(user: User.current_user).where(date_id: @date).sum(:duration)
   end
 
   def avg_calories_burned
@@ -58,18 +59,18 @@ class Dashboard
   end
 
   def weight_delta
-    number = Weight.order(:date_id).count
+    number = Weight.where(user: User.current_user).order(:date_id).count
     if number > 1
-      delta_percent = ((Weight.order(date_id: :desc)[number-2].weight - Weight.order(date_id: :desc)[number-3].weight) / Weight.order(date_id: :desc)[number-2].weight).round(3)
-      delta_pounds = Weight.order(date_id: :desc)[number-2].weight - Weight.order(date_id: :desc)[number-3].weight
+      delta_percent = ((Weight.where(user: User.current_user).order(date_id: :desc)[number-2].weight - Weight.where(user: User.current_user).order(date_id: :desc)[number-3].weight) / Weight.where(user: User.current_user).order(date_id: :desc)[number-2].weight).round(3)
+      delta_pounds = Weight.where(user: User.current_user).order(date_id: :desc)[number-2].weight - Weight.where(user: User.current_user).order(date_id: :desc)[number-3].weight
       {percent: delta_percent, pounds: delta_pounds}
     else
       {percent: 0, pounds: 0}
-    end  
+    end
   end
 
   def most_caloric_meal
-    meal = Meal.where(date_id: @date).order(:calories).last
+    meal = Meal.where(user: User.current_user).where(date_id: @date).order(:calories).last
     {description: meal.description, calories: meal.calories}
   end
 

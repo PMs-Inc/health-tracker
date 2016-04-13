@@ -1,12 +1,11 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
 
   # GET /exercises
   # GET /exercises.json
   def index
-    @exercises = Exercise.all
+    @exercises = Exercise.where(user: User.current_user)
   end
 
   # GET /exercises/1
@@ -80,6 +79,6 @@ class ExercisesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exercise_params
-      params.require(:exercise).permit(:exercise_type_id, :date_id, :duration)
+      params.require(:exercise).permit(:exercise_type_id, :date_id, :duration, :user_id)
     end
 end

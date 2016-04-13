@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412233621) do
+ActiveRecord::Schema.define(version: 20160412234900) do
 
   create_table "days", force: :cascade do |t|
     t.date     "date"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160412233621) do
     t.decimal  "duration",         precision: 5, scale: 2
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.integer  "user_id"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160412233621) do
     t.integer  "date_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
 
   create_table "steps", force: :cascade do |t|
@@ -47,6 +49,7 @@ ActiveRecord::Schema.define(version: 20160412233621) do
     t.integer  "step_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,6 +75,7 @@ ActiveRecord::Schema.define(version: 20160412233621) do
     t.decimal  "weight",     precision: 5, scale: 2
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+    t.integer  "user_id"
   end
 
 end

@@ -1,10 +1,9 @@
 class WeightsController < ApplicationController
   before_action :set_weight, only: [:show, :destroy]
-  before_action :authenticate_user!
 
 
   def index
-    @weights = Weight.all
+    @weights = Weight.where(user: User.current_user)
   end
 
   def show
@@ -43,7 +42,7 @@ class WeightsController < ApplicationController
     end
 
     def weight_params
-      params.require(:weight).permit(:weight, :date_id)
+      params.require(:weight).permit(:weight, :date_id, :user_id)
     end
 
 end

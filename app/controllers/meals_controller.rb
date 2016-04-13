@@ -1,12 +1,11 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
 
   # GET /meals
   # GET /meals.json
   def index
-    @meals = Meal.all
+    @meals = Meal.where(user: User.current_user)
   end
 
   # GET /meals/1
@@ -79,6 +78,6 @@ class MealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meal_params
-      params.require(:meal).permit(:calories, :description, :date_id)
+      params.require(:meal).permit(:calories, :description, :date_id, :user_id)
     end
 end

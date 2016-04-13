@@ -1,10 +1,9 @@
 class StepsController < ApplicationController
   before_action :set_step, only: [:show, :destroy]
-  before_action :authenticate_user!
 
 
   def index
-    @steps = Step.all
+    @steps = Step.where(user: User.current_user)
   end
 
   def show
@@ -46,7 +45,7 @@ class StepsController < ApplicationController
     end
 
     def step_params
-      params.require(:step).permit(:date_id, :step_count, :created_at, :updated_at)
+      params.require(:step).permit(:date_id, :step_count, :created_at, :updated_at, :user_id)
     end
 
 end

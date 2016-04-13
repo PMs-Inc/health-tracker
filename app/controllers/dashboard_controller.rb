@@ -1,5 +1,4 @@
 class DashboardController < ApplicationController
-  before_action :authenticate_user!
 
   def show
 
@@ -12,10 +11,10 @@ class DashboardController < ApplicationController
     @weight = Weight.new
     @step = Step.new
 
-    @exercises = Exercise.where(date_id: date_int)
-    @meals = Meal.where(date_id: date_int)
-    @weights = Weight.where(date_id: date_int)
-    @steps = Step.where(date_id: date_int)
+    @exercises = Exercise.where(user: current_user).where(date_id: date_int)
+    @meals = Meal.where(user: current_user).where(date_id: date_int)
+    @weights = Weight.where(user: current_user).where(date_id: date_int)
+    @steps = Step.where(user: current_user).where(date_id: date_int)
     @days = Day.get_days
 
     if date_int == nil or date_int == 0
